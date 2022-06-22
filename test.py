@@ -36,12 +36,16 @@ def VerifyInput(image, firstT, secondT):
 
     data_json = json.loads(response.read())
 
-    if (str(firstT) not in str(data_json)):
-        print(f"{firstT} is not a valid tag, at least not for '{image}'.")
-        quit()
-
-    if (str(secondT) not in str(data_json)):
-        print(f"{secondT} is not a valid tag, at least not for '{image}'.")
+    if ((len(firstT) > 1) and (len(secondT) > 1)):
+        if (str(firstT) not in str(data_json)):
+            print(f"{firstT} is not a valid tag, at least not for '{image}'.")
+            quit()
+            
+        if (str(secondT) not in str(data_json)):
+            print(f"{secondT} is not a valid tag, at least not for '{image}'.")
+            quit()
+    else:
+        print("Invalid tags.")
         quit()
 
 def PrintDifferences(tags1, tags2):
